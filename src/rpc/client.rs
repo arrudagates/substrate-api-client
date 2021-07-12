@@ -119,7 +119,10 @@ pub fn on_extrinsic_msg_until_finalized(
             warn!("extrinsic has 'future' status. aborting");
             end_process(out, result, None)
         }
-        Err(e) => Err(Box::new(e).into()),
+        Err(e) => {
+            end_process(out, result, None)?;
+            Err(Box::new(e).into())
+        },
         _ => Ok(()),
     }
 }
@@ -135,7 +138,10 @@ pub fn on_extrinsic_msg_until_in_block(
         Ok((XtStatus::Finalized, val)) => end_process(out, result, val),
         Ok((XtStatus::InBlock, val)) => end_process(out, result, val),
         Ok((XtStatus::Future, _)) => end_process(out, result, None),
-        Err(e) => Err(Box::new(e).into()),
+        Err(e) => {
+            end_process(out, result, None)?;
+            Err(Box::new(e).into())
+        },
         _ => Ok(()),
     }
 }
@@ -151,7 +157,10 @@ pub fn on_extrinsic_msg_until_broadcast(
         Ok((XtStatus::Finalized, val)) => end_process(out, result, val),
         Ok((XtStatus::Broadcast, _)) => end_process(out, result, None),
         Ok((XtStatus::Future, _)) => end_process(out, result, None),
-        Err(e) => Err(Box::new(e).into()),
+        Err(e) => {
+            end_process(out, result, None)?;
+            Err(Box::new(e).into())
+        },
         _ => Ok(()),
     }
 }
@@ -167,7 +176,10 @@ pub fn on_extrinsic_msg_until_ready(
         Ok((XtStatus::Finalized, val)) => end_process(out, result, val),
         Ok((XtStatus::Ready, _)) => end_process(out, result, None),
         Ok((XtStatus::Future, _)) => end_process(out, result, None),
-        Err(e) => Err(Box::new(e).into()),
+        Err(e) => {
+            end_process(out, result, None)?;
+            Err(Box::new(e).into())
+        },
         _ => Ok(()),
     }
 }
