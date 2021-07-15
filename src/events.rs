@@ -75,6 +75,12 @@ pub enum AssetId {
     USD
 }
 
+impl Default for AssetId{
+    fn default() -> Self {
+        AssetId::POLKADEX
+    }
+}
+
 #[derive(Clone)]
 pub struct EventsDecoder {
     metadata: Metadata,
