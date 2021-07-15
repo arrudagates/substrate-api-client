@@ -26,6 +26,7 @@ use support::weights::DispatchInfo;
 use system::Phase;
 
 use crate::node_metadata::{EventArg, Metadata, MetadataError};
+use crate::sp_runtime::app_crypto::sp_core::H160;
 
 /// Event for the System module.
 #[derive(Clone, Debug, Decode)]
@@ -62,6 +63,16 @@ pub enum EventsError {
     Metadata(#[from] MetadataError),
     #[error("Type Sizes Unavailable: {0:?}")]
     TypeSizeUnavailable(String),
+}
+
+#[derive(Encode, Decode, Copy, Clone, PartialEq, Eq, Ord, PartialOrd, Debug)]
+pub enum AssetId {
+    POLKADEX,
+    DOT, // TODO: Enabled in Parachain upgrade
+    CHAINSAFE(H160),
+    // PARACHAIN(para_id, network, palletInstance, assetID),
+    BTC,
+    USD
 }
 
 #[derive(Clone)]
@@ -102,6 +113,7 @@ impl TryFrom<Metadata> for EventsDecoder {
         decoder.register_type_size::<crate::Balance>("Balance")?;
         // VoteThreshold enum index
         decoder.register_type_size::<u8>("VoteThreshold")?;
+        decoder.register_type_size::<AssetId>("AssetId")?;
 
         Ok(decoder)
     }
