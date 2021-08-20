@@ -15,7 +15,8 @@ thiserror       = { version = "1.0", optional =true }
 primitive-types = { version = "0.9.0", optional = true, features = ["codec"] }
 
 [dependencies.sp-core]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "3.0.0"
 package = "sp-core"
 default-features = false
 features = ["full_crypto"]
@@ -27,32 +28,38 @@ version = "2.1.1"
 default-features = false
 
 [dependencies.metadata]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "13.0.0"
 package = "frame-metadata"
 default-features=false
 
 [dependencies.sp-version]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "3.0.0"
 package = "sp-version"
 default-features=false
 
 [dependencies.balances]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "3.0.0"
 package = "pallet-balances"
 default-features=false
 
 [dependencies.system]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "3.0.0"
 package = "frame-system"
 default-features=false
 
 [dependencies.sp-runtime]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "3.0.0"
 package = "sp-runtime"
 default-features=false
 
 [dependencies.support]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "3.0.0"
 package = "frame-support"
 default-features=false
 
@@ -62,7 +69,9 @@ package = "sp-std"
 default-features = false
 
 [dependencies.sc-rpc-api]
-git = "https://github.com/paritytech/substrate.git"
+#git = "https://github.com/paritytech/substrate.git"
+version = "0.9.0"
+package = "sc-rpc-api"
 optional = true
 
 [dev-dependencies.node-template-runtime]
